@@ -1,0 +1,9 @@
+{
+  "name": "react-webpack-template",
+  "version": "1.0.0",
+  "description": "react webpack template",
+  "main": "index.js",
+  "repository": "https://github.com/fortune-cook1e/react-webpack-template.git",
+  "author": "fortune_cookie <767077147@qq.com>",
+  "license": "MIT"
+}
