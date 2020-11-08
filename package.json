@@ -6,7 +6,8 @@
   "author": "fortune_cookie <767077147@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node ./build/webpack.dev.config.js"
+    "dev": "cross-env NODE_ENV=development node ./build/webpack.dev.config.js",
+    "eslint": "eslint --ext ..src/"
   },
   "dependencies": {
     "react": "^17.0.1",
@@ -17,9 +18,14 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.1",
+    "eslint": "^7.13.0",
+    "eslint-config-alloy": "^3.8.2",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^4.5.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.4.0",
