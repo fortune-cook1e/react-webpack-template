@@ -9,6 +9,16 @@ const resolve = (dir) => {
 
 const jsReg = /\.(js|jsx)$/
 const cssReg = /\.(css)$/
+const cssModuleReg = /\.module\.css$/
+const lessReg = /\.less$/
+const lessModuleReg = /\.module\.less$/
+
+const lessOptions = () => {
+  const varsLess = resolve('../src/styles/vars.less')
+  return {
+    additionalData: `@import "${varsLess}";`
+  }
+}
 
 const config = {
   entry: {
@@ -46,8 +56,60 @@ const config = {
       {
         test: cssReg,
         include: resolve('../src'),
-        exclude: /node_modules/,
+        exclude: [cssModuleReg, '/node_modules/'],
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: cssModuleReg,
+        include: resolve('../src'),
+        exclude: '/node_modules/',
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentContext: path.resolve(__dirname, 'src')
+              },
+              importLoaders: 1
+            }
+          }
+        ]
+      },
+      {
+        test: lessReg,
+        include: resolve('../src'),
+        exclude: [lessModuleReg, '/node_modules/'],
+        use: [
+          'style-loader', 'css-loader',
+          {
+            loader: 'less-loader',
+            options: lessOptions()
+          }
+        ]
+      },
+      {
+        test: lessModuleReg,
+        include: resolve('../src'),
+        exclude: '/node_modules/',
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentContext: path.resolve(__dirname, 'src')
+              },
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: lessOptions()
+          }
+        ]
       }
     ]
   },
