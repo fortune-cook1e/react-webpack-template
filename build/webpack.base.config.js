@@ -7,7 +7,7 @@ const resolve = (dir) => {
   return path.join(__dirname, dir)
 }
 
-const jsReg = /\.(js|jsx)$/
+const jsReg = /\.(js|jsx|ts|tsx)$/
 const cssReg = /\.(css)$/
 
 const config = {
@@ -23,7 +23,7 @@ const config = {
     chunkFilename: 'js/[name].[id].js'
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       '@': resolve('../src')
     }

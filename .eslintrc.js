@@ -1,6 +1,6 @@
 module.exports = {
   // 解析器类型
-  'parser': 'babel-eslint',
+  'parser': '@typescript-eslint/parser',
   // 环境变量
   'env': {
     'es6': true,
@@ -11,6 +11,8 @@ module.exports = {
   // 扩展
   'extends': [
     'eslint-config-alloy/react',
+    'eslint-config-alloy/typescript',
+    'plugin:@typescript-eslint/recommended',
   ],
   // 环境与全局变量,true false 代表 是否可写
   'globals': {
@@ -29,7 +31,7 @@ module.exports = {
       'version': 'detect', // React version. "detect" automatically picks the version you have installed.
     },
   },
-  //   "off" 或 0：关闭规则
+  // "off" 或 0：关闭规则
   // "warn" 或 1：开启规则，warn 级别的错误 (不会导致程序退出)
   // "error" 或 2：开启规则，error级别的错误(当被触发的时候，程序会退出)
   'rules': {
@@ -38,6 +40,9 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     'react/jsx-indent': ['error', 2],
     'react/jsx-indent-props': 'off',
+
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
 
     // 额外eslint 可根据个人习惯删除
     'indent': ['error', 2, { 'SwitchCase': 1 }], // 空格数
