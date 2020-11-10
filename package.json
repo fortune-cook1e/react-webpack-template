@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./build/webpack.dev.config.js",
     "eslint": "cross-env eslint . --ext .js,.jsx",
+    "stylelint": "stylelint src/styles/*.less",
     "commit": "cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
@@ -30,6 +31,7 @@
     "@babel/preset-react": "^7.12.5",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "autoprefixer": "^9.0.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "commitizen": "^4.2.2",
@@ -41,14 +43,26 @@
     "eslint-config-alloy": "^3.8.2",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.0",
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
+    "postcss-loader": "^4.0.4",
     "style-loader": "^2.0.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-standard": "^20.0.0",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.3.0"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
 }

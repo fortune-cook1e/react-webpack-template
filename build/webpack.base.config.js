@@ -57,7 +57,16 @@ const config = {
         test: cssReg,
         include: resolve('../src'),
         exclude: [cssModuleReg, '/node_modules/'],
-        use: ['style-loader', 'css-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader'
+        ]
       },
       {
         test: cssModuleReg,
@@ -74,7 +83,8 @@ const config = {
               },
               importLoaders: 1
             }
-          }
+          },
+          'postcss-loader'
         ]
       },
       {
@@ -82,7 +92,14 @@ const config = {
         include: resolve('../src'),
         exclude: [lessModuleReg, '/node_modules/'],
         use: [
-          'style-loader', 'css-loader',
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader',
           {
             loader: 'less-loader',
             options: lessOptions()
@@ -105,10 +122,32 @@ const config = {
               importLoaders: 2
             }
           },
+          'postcss-loader',
           {
             loader: 'less-loader',
             options: lessOptions()
           }
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'file-loader', options: { name: '[path][name].[ext]?[hash]', }, }
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'file-loader', options: { name: '[path][name].[ext]?[hash]', }, }
+        ]
+      },
+      {
+        test: /\.(xlsx|xls)(\?.*$|$)/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'file-loader', options: { name: '[path][name].[ext]?[hash]', }, }
         ]
       }
     ]
