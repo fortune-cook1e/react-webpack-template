@@ -1,162 +1,67 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = !!(process.env.NODE_ENV !== 'production')
+const jstsRegex = /\.(js|jsx|ts|tsx)$/
+const cssRegex = /\.css$/
+const cssModuleRegex = /\.module\.css$/
+const lessRegex = /\.less$/
+const lessModuleRegex = /\.module\.less$/
 
-const resolve = (dir) => {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const jsReg = /\.(js|jsx)$/
-const cssReg = /\.(css)$/
-const cssModuleReg = /\.module\.css$/
-const lessReg = /\.less$/
-const lessModuleReg = /\.module\.less$/
-
-const lessOptions = () => {
-  const varsLess = resolve('../src/styles/vars.less')
-  return {
-    additionalData: `@import "${varsLess}";`
-  }
-}
-
-const config = {
-  entry: {
-    main: resolve('../src/main.jsx')
-  },
+module.exports = {
   mode: isDev ? 'development' : 'production',
-  devtool: 'source-map',
+  entry: {
+    app: './src/main.jsx'
+  },
   output: {
     path: resolve('../dist'),
-    publicPath: isDev ? '/' : './',
-    filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/[name].[id].js'
+    filename: isDev ? 'js/[name].js' : 'js/[name].[contenthash].js',
+    chunkFilename: isDev ? 'js/[name].js' : 'js/[name].[contenthash].js',
   },
+  devtool: isDev ? 'source-map' : 'eval',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
-      '@': resolve('../src')
-    }
+      '@/src': resolve(__dirname, '../src'),
+    },
   },
   module: {
     rules: [
       {
-        test: jsReg,
-        include: resolve('../src'),
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true
-            }
-          }
-        ]
-      },
-      {
-        test: cssReg,
-        include: resolve('../src'),
-        exclude: [cssModuleReg, '/node_modules/'],
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          'postcss-loader'
-        ]
-      },
-      {
-        test: cssModuleReg,
-        include: resolve('../src'),
+        test: jstsRegex,
         exclude: '/node_modules/',
+        include: resolve('../src'),
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                localIdentContext: path.resolve(__dirname, 'src')
-              },
-              importLoaders: 1
-            }
-          },
-          'postcss-loader'
+          { loader: 'babel-loader', options: { cacheDirectory: true }}
         ]
       },
       {
-        test: lessReg,
-        include: resolve('../src'),
-        exclude: [lessModuleReg, '/node_modules/'],
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: lessOptions()
-          }
-        ]
-      },
-      {
-        test: lessModuleReg,
-        include: resolve('../src'),
+        test: cssRegex,
         exclude: '/node_modules/',
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                localIdentContext: path.resolve(__dirname, 'src')
-              },
-              importLoaders: 2
-            }
-          },
-          'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: lessOptions()
-          }
-        ]
+        include: resolve('../src'),
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        exclude: /node_modules/,
+        test: lessRegex,
+        exclude: [lessModuleRegex, '/node_modules/'],
         use: [
-          { loader: 'file-loader', options: { name: '[path][name].[ext]?[hash]', }, }
-        ]
+          'style-loader','css-loader','less-loader'
+        ],
+        sideEffects: true,
       },
-      {
-        test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
-        exclude: /node_modules/,
-        use: [
-          { loader: 'file-loader', options: { name: '[path][name].[ext]?[hash]', }, }
-        ]
-      },
-      {
-        test: /\.(xlsx|xls)(\?.*$|$)/,
-        exclude: /node_modules/,
-        use: [
-          { loader: 'file-loader', options: { name: '[path][name].[ext]?[hash]', }, }
-        ]
-      }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve('../public/index.html')
-    })
+      title: 'React Basic App',
+      template: resolve('../public/index.html'),
+      filename: 'index.html'
+    }),
+    new CleanWebpackPlugin()
   ]
 }
-
-module.exports = config

@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "@babel/preset-react",
+      "@babel/preset-env",
       {
         "targets": {
           "edge": "17",
@@ -11,6 +11,7 @@
         },
         "useBuiltIns": "usage"
       }
-    ]
+    ],
+    "@babel/preset-react"
   ]
 }
