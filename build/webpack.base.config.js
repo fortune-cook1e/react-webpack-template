@@ -14,6 +14,18 @@ function resolve(dir) {
   return path.resolve(__dirname, dir)
 }
 
+const cssModuleOptions = (type, useModules) => {
+  const options = { importLoaders: type || 1 }
+  if (useModules) {
+    options.modules = {
+      localIdentName: '[path][name]_[hash:base64:5]',
+      localIdentContext: resolve(__dirname, '../src'),
+      exportLocalsConvention: 'camelCase'
+    }
+  }
+  return options
+}
+
 module.exports = {
   mode: isDev ? 'development' : 'production',
   devtool: isDev ? 'eval-source-map' : 'none',
@@ -55,12 +67,7 @@ module.exports = {
           'style-loader',
           {
             loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[name]__[local]___[hash:base64:5]'
-              },
-              importLoaders: 1,
-            }
+            options: cssModuleOptions(1, true)
           }
         ]
       },
@@ -71,6 +78,16 @@ module.exports = {
           'style-loader', 'css-loader', 'less-loader'
         ],
         sideEffects: true,
+      },
+      {
+        test: lessModuleRegex,
+        exclude: '/node_modules/',
+        use: [
+          'cache-loader',
+          'style-loader',
+          { loader: 'css-loader', options: cssModuleOptions(2, true) },
+          { loader: 'less-loader' },
+        ],
       },
     ]
   },
