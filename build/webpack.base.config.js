@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const isDev = !!(process.env.NODE_ENV !== 'production')
@@ -104,5 +105,6 @@ module.exports = {
       reportFilename: resolve('../report/index.html'),
       openAnalyzer: false,
     }),
+    new DashboardPlugin()
   ]
 }

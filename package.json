@@ -6,7 +6,7 @@
   "author": "fortune_cookie <767077147@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.dev.config.js",
+    "dev": "webpack-dashboard -- cross-env NODE_ENV=development webpack serve --config ./build/webpack.dev.config.js",
     "eslint": "cross-env eslint . --ext .js,.ts,.jsx,.tsx --cache",
     "stylelint": "stylelint src/styles/*.less",
     "commit": "cz",
@@ -57,6 +57,7 @@
     "webpack": "^5.23.0",
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.5.0",
+    "webpack-dashboard": "^3.3.1",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.3.0"
   },
