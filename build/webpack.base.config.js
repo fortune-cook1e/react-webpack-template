@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const isDev = !!(process.env.NODE_ENV !== 'production')
 const jstsRegex = /\.(js|jsx|ts|tsx)$/
@@ -10,24 +11,24 @@ const lessRegex = /\.less$/
 const lessModuleRegex = /\.module\.less$/
 
 function resolve(dir) {
-  return path.join(__dirname, dir)
+  return path.resolve(__dirname, dir)
 }
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
+  devtool: isDev ? 'eval-source-map' : 'none',
   entry: {
-    app: './src/main.jsx'
+    app: resolve('../src/main.jsx')
   },
   output: {
     path: resolve('../dist'),
     filename: isDev ? 'js/[name].js' : 'js/[name].[contenthash].js',
     chunkFilename: isDev ? 'js/[name].js' : 'js/[name].[contenthash].js',
   },
-  devtool: isDev ? 'source-map' : 'eval',
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      '@/src': resolve(__dirname, '../src'),
+      '@/src': path.resolve(__dirname, '../src/')
     },
   },
   module: {
@@ -42,26 +43,49 @@ module.exports = {
       },
       {
         test: cssRegex,
-        exclude: '/node_modules/',
+        exclude: [cssModuleRegex, '/node_modules/'],
         include: resolve('../src'),
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: cssModuleRegex,
+        exclude: '/node_modules/',
+        include: resolve('../src'),
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+              },
+              importLoaders: 1,
+            }
+          }
+        ]
       },
       {
         test: lessRegex,
         exclude: [lessModuleRegex, '/node_modules/'],
         use: [
-          'style-loader','css-loader','less-loader'
+          'style-loader', 'css-loader', 'less-loader'
         ],
         sideEffects: true,
       },
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'React Basic App',
+      title: 'React Webpack Template',
       template: resolve('../public/index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
+      inject: 'body',  // script插入body底部
     }),
-    new CleanWebpackPlugin()
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: resolve('../report/index.html'),
+      openAnalyzer: false,
+    }),
   ]
 }
