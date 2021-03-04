@@ -1,40 +1,40 @@
 module.exports = {
   // 解析器类型
-  'parser': '@babel/eslint-parser',
+  parser: 'babel-eslint',
   // 环境变量
-  'env': {
-    'es6': true,
-    'browser': true,
-    'node': true,
-    'commonjs': true,
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
   },
   // 扩展
-  'extends': [
+  extends: [
     'eslint-config-alloy/react',
     'eslint:recommended',
     'plugin:react/recommended'
   ],
   // 环境与全局变量,true false 代表 是否可写
-  'globals': {
-
-  },
-  // 插件检测 react 和 react-hooks
-  // eslint-plugin-react eslint-plugin-react-hooks
-  'plugins': [
-    'react',
-    'react-hooks'
-  ],
-  'settings': {
+  globals: {},
+  settings: {
     'react': {
       'createClass': 'createReactClass', // Regex for Component Factory to use,
       'pragma': 'React',  // Pragma to use, default to "React"
       'version': 'detect', // React version. "detect" automatically picks the version you have installed.
     },
   },
-  //   "off" 或 0：关闭规则
+  plugins: ['react', 'react-hooks'],
+  parserOptions: {
+    ecmaVersion: '2017',
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      jsx: true,
+    },
+    sourceType: 'module',
+  },
+  // "off" 或 0：关闭规则
   // "warn" 或 1：开启规则，warn 级别的错误 (不会导致程序退出)
   // "error" 或 2：开启规则，error级别的错误(当被触发的时候，程序会退出)
-  'rules': {
+  rules: {
     'react/self-closing-comp': 1, // 自闭合
     'react/jsx-indent': [2, 2],
     'react/jsx-indent-props': [2, 2],
@@ -52,7 +52,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 1,  // 检查 effect 的依赖
     'indent': [2, 2, { 'SwitchCase': 1 }], // 缩进
     'quotes': [2, 'single'],    // 单双引号
-    'no-unused-expressions': 1, // 禁止未使用过的表达式
+    'no-unused-expressions': 0, // 禁止未使用过的表达式
     'guard-for-in': 2, // 要求 for-in 循环中有一个 if 语句
     'no-var': 2,
     'semi': [2, 'never'], // 禁止使用分号

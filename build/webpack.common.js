@@ -63,6 +63,7 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'React Webpack Template',
       template: paths.public + '/index.html', // template file
+      favicon: paths.public + '/favicon.ico',
       filename: 'index.html', // output file
       inject: 'body',  // script插入body底部
     }),
