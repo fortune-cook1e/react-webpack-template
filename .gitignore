@@ -1,1 +1,5 @@
 /node_modules/
+.eslintcache
+yarn-error.log
+yarn.lock
+/report/

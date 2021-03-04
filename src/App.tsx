@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function App():JSX.Element {
+const App:React.FC = () => {
   return (
-    <div className='app'>
+    <div className='primary-color'>
       this is App
     </div>
   )
 }
+
+export default App
