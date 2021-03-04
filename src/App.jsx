@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function App() {
+const App = () => {
   return (
     <div className='primary-color'>
-      this is 222231232121212222222
+      this is Apps
     </div>
   )
 }
+
+export default App
