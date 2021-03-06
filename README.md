@@ -23,6 +23,8 @@ yarn start or npm run start
 - React 17
 - Typescript (__Branch:typescript__)
 - Webpack 5
+- Redux
+- react-router
 - PostCss
 - Babel
 - Less

@@ -1,9 +1,10 @@
 import React from 'react'
+import RouterComponent from './router'
 
 const App = () => {
   return (
-    <div className='primary-color'>
-      this is Apps
+    <div className='app'>
+      <RouterComponent />
     </div>
   )
 }
