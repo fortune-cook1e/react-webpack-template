@@ -54,7 +54,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      '@/src': paths.src
+      '@': paths.src
     },
   },
 

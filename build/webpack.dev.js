@@ -22,7 +22,7 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: [
           {
-            loader: require.resolve('babel-loader'),
+            loader: 'babel-loader',
             options: {
               plugins: [
                 require.resolve('react-refresh/babel'),

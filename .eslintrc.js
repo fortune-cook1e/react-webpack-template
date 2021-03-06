@@ -45,7 +45,7 @@ module.exports = {
     'react/jsx-curly-newline': 2,
     'react/jsx-equals-spacing': [2, 'never'],
     'react/jsx-no-duplicate-props': 2,
-    'react/jsx-one-expression-per-line': 1,
+    'react/jsx-one-expression-per-line': 0,
     'react/jsx-pascal-case': 1,
     'react/jsx-props-no-multi-spaces': 2,
     'react-hooks/rules-of-hooks': 2, // 检查 Hook 的规则
