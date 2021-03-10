@@ -5,6 +5,7 @@
   "repository": "https://github.com/fortune-cook1e/react-webpack-template.git",
   "author": "fortune_cookie <767077147@qq.com>",
   "license": "MIT",
+  "homepage": "https://fortune-cook1e.github.io/react-webpack-template",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.dev.js",
     "analyze": "cross-env NODE_ENV=development USE_ANALYZE=1 webpack serve --config ./build/webpack.dev.js",
