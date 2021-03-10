@@ -47,7 +47,7 @@ const config = {
   },
   output: {
     path: paths.build,
-    publicPath: '/', // 部署到github.io上
+    publicPath: isDev ? '/' : './',
     filename: isDev ? 'js/[name].js' : 'js/[name].[contenthash].js',
     chunkFilename: isDev ? 'js/[name].js' : 'js/[name].[contenthash].js',
   },
