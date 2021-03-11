@@ -79,6 +79,9 @@ yarn start or npm run start
 - react-refresh
 - terser-webpack-plugin
 
+### Online Demo
+![Preview](https://fortune-cook1e.github.io/react-webpack-template)
+
 ## License
 
 [MIT](https://github.com/fortune-cook1e/react-webpack-template/blob/master/LICENSE)
