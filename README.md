@@ -80,7 +80,7 @@ yarn start or npm run start
 - terser-webpack-plugin
 
 ### Online Demo
-![Preview](https://fortune-cook1e.github.io/react-webpack-template)
+[Preview](https://fortune-cook1e.github.io/react-webpack-template)
 
 ## License
 
