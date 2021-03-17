@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './index.module.less'
 
 const Home = () => {
   return (
-    <div className='home'>
+    <div className={styles.home}>
       this is home
     </div>
   )

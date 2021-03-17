@@ -93,7 +93,7 @@ const config = {
         exclude: [cssModuleRegex, '/node_modules/'],
         include: paths.src,
         use: [
-          MiniCssExtractPlugin.loader,
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: cssModuleOptions(1, false)
@@ -107,7 +107,7 @@ const config = {
         exclude: '/node_modules/',
         include: paths.src,
         use: [
-          MiniCssExtractPlugin.loader,
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: cssModuleOptions(1, true)
@@ -119,7 +119,7 @@ const config = {
         test: lessRegex,
         exclude: [lessModuleRegex, '/node_modules/'],
         use: [
-          MiniCssExtractPlugin.loader,
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: cssModuleOptions(1, false)
@@ -136,7 +136,8 @@ const config = {
         test: lessModuleRegex,
         exclude: '/node_modules/',
         use: [
-          MiniCssExtractPlugin.loader,
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'style-loader',
           { loader: 'css-loader', options: cssModuleOptions(1, true) },
           'postcss-loader',
           { loader: 'less-loader' },
