@@ -7,9 +7,10 @@
   "license": "MIT",
   "homepage": "https://fortune-cook1e.github.io/react-webpack-template",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.dev.js",
-    "analyze": "cross-env NODE_ENV=development USE_ANALYZE=1 webpack serve --config ./build/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
+    "dev": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "dev:analyze": "cross-env NODE_ENV=development USE_ANALYZE=1 webpack serve --config ./config/webpack.dev.js",
+    "build:analyze": "cross-env NODE_ENV=production USE_ANALYZE=1 webpack --config config/webpack.prod.js",
     "lint": "cross-env eslint src --ext .js,.ts,.jsx,.tsx --cache",
     "lint-fix": "cross-env eslint src --ext .js,.jsx --fix",
     "stylelint": "stylelint src/styles/*.less",
