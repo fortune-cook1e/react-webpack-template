@@ -1,7 +1,8 @@
+import React from 'react'
 import { renderRoutes } from 'react-router-config'
+import { HashRouter } from 'react-router-dom'
 
 import HomePage from '@/pages/home'
-import ReduxPage from '@/pages/redux'
 
 const Root = ({ route }) => renderRoutes(route.routes)
 
@@ -20,15 +21,17 @@ const routes = [
         exact: true,
         title: '首页',
         component: HomePage
-      },
-      {
-        path: '/redux',
-        exact: true,
-        title: 'redux demo',
-        component: ReduxPage
       }
     ]
   }
 ]
 
-export default routes
+const RouterEntry = () => {
+  return (
+    <HashRouter>
+      {renderRoutes(routes)}
+    </HashRouter>
+  )
+}
+
+export default RouterEntry

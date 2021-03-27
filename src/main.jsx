@@ -6,8 +6,6 @@ import App from './App.jsx'
 
 import './styles/base.less'
 
-console.log('test workflow')
-
 render(
   <Provider store={store}>
     <App />
