@@ -1,6 +1,6 @@
 module.exports = {
   // 解析器类型
-  parser: 'babel-eslint',
+  'parser': '@typescript-eslint/parser',
   // 环境变量
   env: {
     browser: true,
@@ -10,6 +10,8 @@ module.exports = {
   // 扩展
   extends: [
     'eslint-config-alloy/react',
+    'eslint-config-alloy/typescript',
+    'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
     'plugin:react/recommended'
   ],
@@ -48,8 +50,13 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
     'react/jsx-pascal-case': 1,
     'react/jsx-props-no-multi-spaces': 2,
+    'react/prop-types': 0,
     'react-hooks/rules-of-hooks': 2, // 检查 Hook 的规则
     'react-hooks/exhaustive-deps': 1,  // 检查 effect 的依赖
+
+    '@typescript-eslint/no-require-imports': 0,
+    '@typescript-eslint/no-var-requires': 0,
+
     'indent': [2, 2, { 'SwitchCase': 1 }], // 缩进
     'quotes': [2, 'single'],    // 单双引号
     'no-unused-expressions': 0, // 禁止未使用过的表达式

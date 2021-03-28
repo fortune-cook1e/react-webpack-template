@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true,
+    "strict": true,
+    "target": "ES2017",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "lib": ["dom", "esnext"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+    }
+  },
+  "typeRoots": [
+    "node_modules/@types",
+    "src/global.d.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ]
+}

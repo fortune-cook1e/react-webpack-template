@@ -43,7 +43,7 @@ const lessOptions = () => {
 
 const config = {
   entry: {
-    app: paths.src + '/main.jsx'
+    app: paths.src + '/main.tsx'
   },
   output: {
     path: paths.build,
@@ -118,6 +118,7 @@ const config = {
       {
         test: lessRegex,
         exclude: [lessModuleRegex, '/node_modules/'],
+        include: paths.src,
         use: [
           isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
@@ -137,7 +138,6 @@ const config = {
         exclude: '/node_modules/',
         use: [
           isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'style-loader',
           { loader: 'css-loader', options: cssModuleOptions(1, true) },
           'postcss-loader',
           { loader: 'less-loader' },
