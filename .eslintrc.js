@@ -57,7 +57,8 @@ module.exports = {
     '@typescript-eslint/no-require-imports': 0,
     '@typescript-eslint/no-var-requires': 0,
 
-    'indent': [2, 2, { 'SwitchCase': 1 }], // 缩进
+    // 'indent': [2, 2, { 'SwitchCase': 1 }], // 缩进
+    'indent': 0,
     'quotes': [2, 'single'],    // 单双引号
     'no-unused-expressions': 0, // 禁止未使用过的表达式
     'guard-for-in': 2, // 要求 for-in 循环中有一个 if 语句
