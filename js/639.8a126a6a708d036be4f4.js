@@ -1,0 +1,1 @@
+(self.webpackChunkreact_webpack_template=self.webpackChunkreact_webpack_template||[]).push([[639],{639:(e,a,t)=>{"use strict";t.r(a),t.d(a,{default:()=>s});t(294);var c=t(893);const s=function(){return(0,c.jsx)("div",{className:"login",children:"this is login page"})}}}]);
