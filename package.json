@@ -13,14 +13,15 @@
     "build:analyze": "cross-env NODE_ENV=production USE_ANALYZE=1 webpack --config config/webpack.prod.js",
     "lint": "cross-env eslint src --ext .js,.ts,.jsx,.tsx --cache",
     "lint-fix": "cross-env eslint src --ext .js,.jsx --fix",
-    "stylelint": "stylelint src/styles/*.less",
+    "stylelint": "stylelint src *.less --cache syntax,less",
+    "stylelint-fix":"stylelint src *.less --fix",
     "commit": "cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "tsc": "tsc"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged --verbose",
+      "pre-commit": "yarn lint-staged --verbose && yarn stylelint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -80,6 +81,7 @@
     "style-loader": "^2.0.0",
     "stylelint": "^13.11.0",
     "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
     "terser-webpack-plugin": "^5.1.1",
     "typescript": "^4.2.2",
     "webpack": "^5.24.3",
