@@ -21,7 +21,7 @@ yarn start or npm run start
 ## Features
 
 - React 17
-- Typescript (__Branch:typescript__)
+- Typescript
 - Webpack 5
 - Redux
 - react-router
@@ -31,6 +31,7 @@ yarn start or npm run start
 - Css-Modules
 - Eslint
 - commitlint
+- Stylelint
 
 ## Dependencies
 
@@ -46,7 +47,7 @@ yarn start or npm run start
 - @babel/core
 - @babel/preset-env
 - @babel/preset-react
-- @babel/preset-typescript (__branch: typescript__)
+- @babel/preset-typescript
 
 ### Eslint
 
@@ -59,6 +60,12 @@ yarn start or npm run start
 
 - @commitlint/cli
 - lint-staged
+
+### Stylelint
+
+- stylelint
+- stylelint-config-standard
+- stylelint-order
 
 ### Loaders
 
@@ -80,6 +87,7 @@ yarn start or npm run start
 - terser-webpack-plugin
 
 ### Online Demo
+
 [Preview](https://fortune-cook1e.github.io/react-webpack-template)
 
 ## License
