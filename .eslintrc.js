@@ -51,11 +51,13 @@ module.exports = {
     'react/jsx-pascal-case': 1,
     'react/jsx-props-no-multi-spaces': 2,
     'react/prop-types': 0,
+    'react/display-name': 0,
     'react-hooks/rules-of-hooks': 2, // 检查 Hook 的规则
     'react-hooks/exhaustive-deps': 1,  // 检查 effect 的依赖
 
     '@typescript-eslint/no-require-imports': 0,
     '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/consistent-type-definitions': 0,
 
     // 'indent': [2, 2, { 'SwitchCase': 1 }], // 缩进
     'indent': 0,
