@@ -2,22 +2,22 @@ import { INCREMENT, DECREMENT } from '@/actions/const/counter'
 import { ACTIONTYPE } from '@/actions/counter'
 
 interface InitialState {
-  number:number;
+  number: number
 }
 
-const initialState:InitialState = {
+const initialState: InitialState = {
   number: 0
 }
 
 const actions = {
-  [INCREMENT]: (state = initialState, action:ACTIONTYPE) => {
+  [INCREMENT]: (state = initialState, action: ACTIONTYPE) => {
     const { payload } = action
     return {
       ...state,
       number: state.number + payload
     }
   },
-  [DECREMENT]: (state = initialState, action:ACTIONTYPE) => {
+  [DECREMENT]: (state = initialState, action: ACTIONTYPE) => {
     const { payload } = action
 
     return {
@@ -27,7 +27,7 @@ const actions = {
   }
 }
 
-export default (state = initialState, action:ACTIONTYPE):InitialState => {
+export default (state = initialState, action: ACTIONTYPE): InitialState => {
   const handler = actions[action.type]
   if (handler) {
     return handler(state, action)
