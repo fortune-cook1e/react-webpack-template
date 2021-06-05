@@ -80,6 +80,19 @@ const config = {
         sideEffects: true
       },
       {
+        test: cssModuleRegex,
+        exclude: '/node_modules/',
+        include: paths.src,
+        use: [
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: cssModuleOptions(1, true)
+          },
+          'postcss-loader'
+        ]
+      },
+      {
         test: lessRegex,
         exclude: [lessModuleRegex, '/node_modules/'],
         include: paths.src,
