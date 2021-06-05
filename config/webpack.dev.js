@@ -1,18 +1,19 @@
-const paths = require('./paths')
 const { merge } = require('webpack-merge')
-const common = require('./webpack.common.js')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const paths = require('./paths')
+const commonConfig = require('./webpack.common')
 
 const jstsRegex = /\.(js|jsx|ts|tsx)$/
-module.exports = merge(common, {
 
+module.exports = merge(commonConfig, {
+  mode: 'development',
+  devtool: 'cheap-source-map',
   devServer: {
     historyApiFallback: true,
     contentBase: paths.build,
-    open: true,
     compress: true,
     hot: true,
-    port: 8080,
+    port: 8080
   },
 
   module: {
@@ -24,18 +25,13 @@ module.exports = merge(common, {
           {
             loader: 'babel-loader',
             options: {
-              plugins: [
-                require.resolve('react-refresh/babel'),
-              ].filter(Boolean),
-            },
-          },
-        ],
-      },
-    ],
+              cacheDirectory: true,
+              plugins: [require.resolve('react-refresh/babel')].filter(Boolean)
+            }
+          }
+        ]
+      }
+    ]
   },
-  plugins: [
-
-    // new webpack.HotModuleReplacementPlugin(),
-    new ReactRefreshWebpackPlugin(),
-  ].filter(Boolean),
+  plugins: [new ReactRefreshWebpackPlugin()].filter(Boolean)
 })

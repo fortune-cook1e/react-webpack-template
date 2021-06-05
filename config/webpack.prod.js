@@ -1,7 +1,6 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
@@ -9,21 +8,22 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const clearPath = path.resolve(__dirname, '../dist')
 
-// const regAntd = /[\\/]node_modules[\\/](antd|moment)[\\/]/
-const regVendor = /[\\/]node_modules[\\/](axios|classnames|)[\\/]/
-const regReact = /[\\/]node_modules[\\/](react|react-dom|react-redux|react-router-config|react-router-dom|react-router-redux|redux)[\\/]/
+const REACT_MODULE =
+  /[\\/]node_modules[\\/](react|react-dom|react-redux|react-router-config|react-router-dom|react-router-redux|redux)[\\/]/
 
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
   plugins: [
-    // Extracts CSS into separate files
-    // Note: style-loader is for development, MiniCssExtractPlugin is for production
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[contenthash].css',
-      chunkFilename: '[id].css',
+      chunkFilename: '[id].css'
     }),
-    new CleanWebpackPlugin({ dry: false, verbose: true, cleanOnceBeforeBuildPatterns: [clearPath, clearPath] }),
+    new CleanWebpackPlugin({
+      dry: false,
+      verbose: true,
+      cleanOnceBeforeBuildPatterns: [clearPath, clearPath]
+    })
   ],
   optimization: {
     minimize: true,
@@ -35,32 +35,31 @@ module.exports = merge(common, {
       chunks: 'all',
       minChunks: 3,
       cacheGroups: {
-        vendor: {
-          test: regVendor,
-          name: 'vendor',
-          minChunks: 1,
-          priority: 10,
-          enforce: true,
-          chunks: 'all',
-        },
+        // vendor: {
+        //   test: regVendor,
+        //   name: 'vendor',
+        //   minChunks: 1,
+        //   priority: 10,
+        //   enforce: true,
+        //   chunks: 'all'
+        // },
         react: {
-          test: regReact,
+          test: REACT_MODULE,
           name: 'react',
           minChunks: 1,
           priority: 10,
           enforce: true,
-          chunks: 'all',
+          chunks: 'all'
         }
-      },
+      }
     },
     runtimeChunk: {
-      name: 'runtime',
-    },
+      name: 'runtime'
+    }
   },
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
-  },
+    maxAssetSize: 512000
+  }
 })
-
