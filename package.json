@@ -14,7 +14,6 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": [
-      "prettier --write",
       "yarn lint",
       "git add ."
     ],
@@ -53,6 +52,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
