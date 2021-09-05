@@ -27,6 +27,14 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/plugin-transform-runtime": "^7.14.3",
@@ -39,6 +47,8 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@types/react": "^17.0.9",
     "@types/react-dom": "^17.0.6",
+    "@types/react-router-config": "^5.0.2",
+    "@types/react-router-dom": "^5.1.7",
     "@types/redux-logger": "^3.0.8",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
@@ -79,11 +89,5 @@
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
-  },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
-    "redux": "^4.1.0"
   }
 }

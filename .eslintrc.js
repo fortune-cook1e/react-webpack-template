@@ -30,7 +30,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
 
     'react/prop-types': 'off',
-    'react/jsx-indent': ['error', 2],
+    'react/jsx-indent': [0, 2],
     'react/jsx-indent-props': 'off',
     'react/no-string-refs': 'off',
     'react/self-closing-comp': 2,
