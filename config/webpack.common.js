@@ -2,7 +2,6 @@ const paths = require('./paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
 const isDev = process.env.NODE_ENV === 'development'
 
 const jstsRegex = /\.(js|jsx|ts|tsx)$/
@@ -35,6 +34,7 @@ const lessOptions = () => {
 }
 
 const config = {
+	target: process.env.NODE_ENV === 'development' ? 'web' : 'browserslist',
 	entry: {
 		app: paths.src + '/main.tsx'
 	},

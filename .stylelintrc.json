@@ -1,59 +1,18 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier"
-  ],
-  "plugins": ["stylelint-order"],
-  "rules":{
-    "selector-pseudo-class-no-unknown": [true,{
-      "ignorePseudoClasses": [
-        "/^:/",
-        "export"
-      ]
-    }],
-    "property-no-unknown": [true, {
-      "ignoreProperties": ["c1"]
-    }],
-    "order/properties-order":[
-      "display",
-      "position",
-      "top",
-      "right",
-      "bottom",
-      "left",
-      "float",
-      "clear",
-      "visibility",
-      "overflow",
-      "width",
-      "max-width",
-      "min-width",
-      "height",
-      "max-height",
-      "min-height",
-      "padding",
-      "padding-top",
-      "padding-right",
-      "padding-bottom",
-      "padding-left",
-      "margin",
-      "margin-top",
-      "margin-right",
-      "margin-bottom",
-      "margin-left",
-      "border",
-      "background",
-      "color",
-      "font",
-      "font-size",
-      "line-height",
-      "text-decoration",
-      "text-align",
-      "vertical-align",
-      "white-space",
-      "break-word",
-      "border-radius",
-      "box-shadow"
-    ]
-  }
+	"extends": ["stylelint-config-prettier"],
+	"plugins": ["stylelint-order"],
+	"rules": {
+		"selector-pseudo-class-no-unknown": [
+			true,
+			{
+				"ignorePseudoClasses": ["/^:/", "export"]
+			}
+		],
+		"property-no-unknown": [
+			true,
+			{
+				"ignoreProperties": ["c1"]
+			}
+		]
+	}
 }

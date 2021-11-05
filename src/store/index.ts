@@ -1,16 +1,26 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import reducers from '@/reducers'
+import {
+	configureStore,
+	getDefaultMiddleware,
+	ThunkAction,
+	Action
+} from '@reduxjs/toolkit'
+import { createLogger } from 'redux-logger'
+import { useDispatch } from 'react-redux'
 
-const middlewares: any[] = []
+import rootReducer from './slices/index'
 
-if (process.env.NODE_ENV === 'development') {
-	middlewares.push(require('redux-logger').createLogger())
-}
+const loggerMiddleware = createLogger()
 
-const store = createStore(
-	reducers,
-	composeWithDevTools(applyMiddleware(...middlewares))
-)
+const middlewares = [...getDefaultMiddleware(), loggerMiddleware]
+
+const store = configureStore({
+	reducer: rootReducer,
+	middleware: middlewares
+})
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch = (): any => useDispatch<AppDispatch>()
+export type AppThunk = ThunkAction<void, RootState, null, Action<string>>
 
 export default store

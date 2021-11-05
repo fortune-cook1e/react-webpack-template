@@ -7,9 +7,8 @@ import App from './App'
 import './styles/base.less'
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app')
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('app')
 )
-
