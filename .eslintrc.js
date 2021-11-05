@@ -31,6 +31,7 @@ module.exports = {
 		'react-hooks/exhaustive-deps': 0,
 
 		'react/prop-types': 'off',
+		'react/display-name': 0,
 		'react/jsx-indent': [0, 2],
 		'react/jsx-indent-props': 'off',
 		'react/no-string-refs': 'off',
