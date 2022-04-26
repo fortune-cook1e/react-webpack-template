@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact_webpack_template=self.webpackChunkreact_webpack_template||[]).push([[963],{5963:function(e,t,a){a.r(t);a(7294);var c=a(2294),n=a(5893);t.default=function(){return(0,n.jsx)(c.Z,{description:"无权限"})}}}]);
