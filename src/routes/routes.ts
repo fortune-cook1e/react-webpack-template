@@ -13,7 +13,7 @@ export const layoutRoutes: IRouteItem[] = [
 		path: '/user',
 		exact: true,
 		auth: false,
-		title: '主页',
+		title: '用户页',
 		component: lazy(() => import('@/pages/user'))
 	},
 	{
