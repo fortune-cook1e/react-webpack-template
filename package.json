@@ -9,7 +9,7 @@
 		"build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
 		"analyze": "cross-env NODE_ENV=production ANALYSIS=1 webpack --config config/webpack.prod.js",
 		"lint": "cross-env eslint src --ext .js,.jsx,.ts,.tsx --cache --fix",
-		"stylelint": "stylelint src *.less *.css --fix",
+		"stylelint": "cross-env stylelint src/**/*.{css,less} --fix",
 		"commit": "cz",
 		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
 	},
@@ -77,6 +77,7 @@
 		"lint-staged": "^11.0.0",
 		"mini-css-extract-plugin": "^1.6.0",
 		"postcss": "^8.3.0",
+		"postcss-less": "^6.0.0",
 		"postcss-loader": "^5.3.0",
 		"postcss-preset-env": "^6.7.0",
 		"prettier": "^2.3.0",

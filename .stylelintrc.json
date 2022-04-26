@@ -1,6 +1,7 @@
 {
 	"extends": ["stylelint-config-prettier"],
 	"plugins": ["stylelint-order"],
+	"customSyntax": "postcss-less",
 	"rules": {
 		"selector-pseudo-class-no-unknown": [
 			true,
