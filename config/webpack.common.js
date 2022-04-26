@@ -141,7 +141,7 @@ const config = {
 			inject: 'body' // script插入body底部
 		}),
 		new MiniCssExtractPlugin({
-			filename: '[name].[contenthash].css',
+			filename: 'styles/[name].[contenthash].css',
 			chunkFilename: '[id].[contenthash].css'
 		}),
 		analysis && new BundleAnalyzerPlugin(),
