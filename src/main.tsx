@@ -6,9 +6,11 @@ import App from './App'
 
 import './styles/base.less'
 
+const rootElement = document.getElementById('root')
+
 render(
 	<Provider store={store}>
 		<App />
 	</Provider>,
-	document.getElementById('app')
+	rootElement
 )

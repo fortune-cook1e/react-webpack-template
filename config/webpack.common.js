@@ -2,7 +2,10 @@ const paths = require('./paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const isDev = process.env.NODE_ENV === 'development'
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const BundleAnalyzerPlugin =
+	require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const antdTheme = require('./theme')
 
 const jstsRegex = /\.(js|jsx|ts|tsx)$/
 const cssRegex = /\.css$/
@@ -10,12 +13,15 @@ const cssModuleRegex = /\.module\.css$/
 const lessRegex = /\.less$/
 const lessModuleRegex = /\.module\.less$/
 
+const isDev = process.env.NODE_ENV === 'development'
+
+const analysis = process.env.ANALYSIS === '1'
+
 const cssModuleOptions = (type, useModules) => {
 	const options = { importLoaders: type || 1 }
 	if (useModules) {
 		options.modules = {
 			localIdentName: '[path][name]_[hash:base64:5]',
-			// localIdentContext: paths.src,
 			exportLocalsConvention: 'camelCase'
 		}
 	}
@@ -23,9 +29,8 @@ const cssModuleOptions = (type, useModules) => {
 }
 
 const lessOptions = () => {
-	const vars = paths.src + '/styles/vars.less'
 	const lessOptions = {
-		modifyVars: { hack: `true; @import "${vars}";` },
+		modifyVars: antdTheme,
 		javascriptEnabled: true
 	}
 	return {
@@ -60,7 +65,10 @@ const config = {
 					{
 						loader: 'babel-loader',
 						options: {
-							cacheDirectory: true
+							cacheDirectory: true,
+							plugins: [isDev && require.resolve('react-refresh/babel')].filter(
+								Boolean
+							)
 						}
 					}
 				]
@@ -120,7 +128,7 @@ const config = {
 					{ loader: 'less-loader' }
 				]
 			}
-		]
+		].filter(Boolean)
 	},
 
 	plugins: [
@@ -135,8 +143,10 @@ const config = {
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash].css',
 			chunkFilename: '[id].[contenthash].css'
-		})
-	]
+		}),
+		analysis && new BundleAnalyzerPlugin(),
+		isDev && new ReactRefreshWebpackPlugin()
+	].filter(Boolean)
 }
 
 module.exports = config

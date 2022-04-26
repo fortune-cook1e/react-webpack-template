@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react'
-
 import { getStorage } from '@/utils'
-
-// export interface UseAuthResponse {
-// 	auth: boolean
-// 	setAuth: (v: boolean) => void
-// }
 
 type UseAuthResponse = [auth: boolean, setAuth: (v: boolean) => void]
 

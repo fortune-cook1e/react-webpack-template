@@ -9,7 +9,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const clearPath = path.resolve(__dirname, '../dist')
 
 const REACT_MODULE =
-	/[\\/]node_modules[\\/](react|react-dom|react-redux|react-router-config|react-router-dom|react-router-redux|redux|@reduxjs\/toolkit)[\\/]/
+	/[\\/]node_modules[\\/](react|react-dom|react-redux|react-router-config|react-router-dom|react-router|redux|@reduxjs\/toolkit)[\\/]/
+const ANTD_MODULE = /[\\/]node_modules[\\/](antd)[\\/]/
+const VENDOR_MODULE = /[\\/]node_modules[\\/](axios)[\\/]/
 
 module.exports = merge(common, {
 	mode: 'production',
@@ -28,21 +30,26 @@ module.exports = merge(common, {
 	optimization: {
 		minimize: true,
 		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
-		// Once your build outputs multiple chunks, this option will ensure they share the webpack runtime
-		// instead of having their own. This also helps with long-term caching, since the chunks will only
-		// change when actual code changes, not the webpack runtime.
 		splitChunks: {
 			chunks: 'all',
 			minChunks: 3,
 			cacheGroups: {
-				// vendor: {
-				//   test: regVendor,
-				//   name: 'vendor',
-				//   minChunks: 1,
-				//   priority: 10,
-				//   enforce: true,
-				//   chunks: 'all'
-				// },
+				antd: {
+					test: ANTD_MODULE,
+					name: 'antd',
+					minChunks: 1,
+					priority: 10,
+					enforce: true,
+					chunks: 'all'
+				},
+				vendor: {
+					test: VENDOR_MODULE,
+					name: 'vendor',
+					minChunks: 1,
+					priority: 10,
+					enforce: true,
+					chunks: 'all'
+				},
 				react: {
 					test: REACT_MODULE,
 					name: 'react',

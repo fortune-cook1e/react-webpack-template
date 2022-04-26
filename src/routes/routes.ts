@@ -5,21 +5,21 @@ export const layoutRoutes: IRouteItem[] = [
 	{
 		path: '/',
 		exact: true,
-		auth: true,
+		auth: false,
 		title: '主页',
 		component: lazy(() => import('@/pages/home'))
 	},
 	{
 		path: '/user',
 		exact: true,
-		auth: true,
+		auth: false,
 		title: '主页',
 		component: lazy(() => import('@/pages/user'))
 	},
 	{
 		path: '/home',
 		exact: true,
-		auth: true,
+		auth: false,
 		title: '主页',
 		component: lazy(() => import('@/pages/home'))
 	}

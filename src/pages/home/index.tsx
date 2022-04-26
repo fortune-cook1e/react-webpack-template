@@ -1,9 +1,12 @@
 import React from 'react'
-import { useRouterQuery } from '@/hooks/useRouteQuery'
+import { Button } from 'antd'
 
-const Home = () => {
-	const a = useRouterQuery()
-	return <div>home</div>
+const Home = (): JSX.Element => {
+	return (
+		<div>
+			<Button>click me</Button>
+		</div>
+	)
 }
 
 export default Home
