@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact_webpack_template=self.webpackChunkreact_webpack_template||[]).push([[384],{7384:function(e,t,n){n.r(t),n.d(t,{NotFound:function(){return c}});n(7294);var a=n(5893),c=function(){return(0,a.jsx)("div",{children:"this is 404 page"})};t.default=c}}]);
