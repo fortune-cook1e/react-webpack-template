@@ -4,8 +4,8 @@ import {
 	ThunkAction,
 	Action
 } from '@reduxjs/toolkit'
-import { createLogger } from 'redux-logger'
 import { useDispatch } from 'react-redux'
+import { createLogger } from 'redux-logger'
 
 import rootReducer from './slices/index'
 

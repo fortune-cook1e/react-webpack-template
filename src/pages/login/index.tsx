@@ -1,6 +1,7 @@
-import { setStorage } from '@/utils'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
+
+import { setStorage } from '@/utils'
 
 const Login: React.FC = () => {
 	const history = useHistory()

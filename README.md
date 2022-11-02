@@ -11,10 +11,10 @@ React17 template with Webpack5
 cd react-webpack-template
 
 # install dependency
-yarn or npm install
+pnpm install
 
 # develop
-yarn start or npm run start
+pnpm start
 
 ```
 

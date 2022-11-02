@@ -1,20 +1,22 @@
-import React, { useEffect, Suspense } from 'react'
 import { Spin } from 'antd'
+import React, { useEffect, Suspense } from 'react'
 import { HashRouter as Router } from 'react-router-dom'
-import RouterElement from './routes'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+  RouteObject
+} from 'react-router-dom'
+
+import { router } from '@/routes'
 
 const App: React.FC = () => {
-	useEffect(() => {
-		// do sth
-	}, [])
+  useEffect(() => {
+    // do sth
+  }, [])
 
-	return (
-		<Suspense fallback={<Spin />}>
-			<Router>
-				<RouterElement />
-			</Router>
-		</Suspense>
-	)
+  return <RouterProvider router={router} />
 }
 
 export default App

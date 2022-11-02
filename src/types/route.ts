@@ -1,5 +1,5 @@
-import { RouteConfig } from 'react-router-config'
 import { ComponentType } from 'react'
+import { RouteConfig } from 'react-router-config'
 
 export interface IRouteItem extends RouteConfig {
 	path: string
