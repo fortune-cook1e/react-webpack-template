@@ -12,7 +12,7 @@
     "lint": "cross-env eslint src --ext .js,.jsx,.ts,.tsx --cache --fix",
     "stylelint": "cross-env stylelint src/**/*.{css,less} --fix",
     "commit": "cz",
-    "lint-staged": "lint-staged",
+    "lint-stage d": "lint-staged",
     "prepare": "husky install",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
